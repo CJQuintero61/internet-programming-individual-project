@@ -1,0 +1,198 @@
+/*
+  Styles for the internet programming individual project
+
+  This page is intended to be ordered in the same way that
+  the HTML tags appear on the page
+
+  constants -> global styles -> header -> main -> footer
+
+  Created By: Christian Quintero
+  Created On: 09/28/2026
+*/
+
+
+/*
+    global variables that can be used anywhere in the stylesheet
+*/
+:root {
+    /* color palette can be found at https://www.color-hex.com/color-palette/1045638 */
+    --valorant-red: #ff4654;
+    --valorant-deep-red: #ba3a46;
+    --valorant-black: #111823;
+    --valorant-white: #ffffff;
+    
+    /* these next colors are taken from the API page I am using https://valorant-api.com/ */
+    --offwhite: #ffeef2;
+    --red-gray: #452e36;
+
+    --h2-font-size: 32px;
+    --base-text-size: 24px;
+}
+
+
+/*
+    styles that apply to the entire page
+
+    the margin and padding are 0 so all elements take up the entire
+    height and width of the viewport and can override them if needed.
+
+    Arial font for all elements
+*/
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial;
+}
+
+
+/*
+    header styling
+*/
+header {
+    color: var(--valorant-white);
+    background-color: var(--valorant-red);
+
+    /* flex in a row to have the title and nav in the same line */
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-between; /* space out the title to the left and nav to the right */
+    align-items: center; /* center items vertically in the header */
+
+    /* padd the top and bottom for a thicker header */
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    /* padd the left and right to center the title and nav items */
+    padding-right: 200px;
+    padding-left: 200px;
+
+    font-size: 24px;
+}
+
+
+/*
+    targets the nav list items within the header
+*/
+header nav {
+    /* flex in a row to have the nav items in the same line */
+    display: flex;
+    flex-direction: row;
+    gap: 60px; /* add some space between the nav items */
+}
+
+
+/*
+    targets the nav <a> links within the header
+*/
+header nav a {
+    color: var(--valorant-white);
+    text-decoration: none; /* remove default underline from nav links */
+    font-size: 24px; /* set a smaller font size for the nav links */
+    font-weight: bold; /* make the nav links bold */
+    text-decoration: underline;
+    text-underline-offset: 8px; /* move the underline down a bit */
+}
+
+
+/*
+    make the body a flex container and take up all of the viewport height.
+    This is to later make the main section take up all space between
+    the header and footer
+*/
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* make the body take up the full height of the viewport */
+}
+
+
+/*
+    make the main section span the entire area between the header and footer
+*/
+main {
+    background-color: var(--offwhite);
+    flex: 1; /* make the main content take up all available space between the header and footer */
+}
+
+
+/*
+    Home section styling
+*/
+#Home {
+    color: var(--valorant-black);
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 200px;
+}
+
+
+/*
+    Home section heading styling
+*/
+#Home h2 {
+    font-size: var(--h2-font-size); /* set a larger font size for the heading */
+}
+
+
+/*
+    Home section paragraph styling
+*/
+#Home p {
+    padding-top: 20px;
+    font-size: var(--base-text-size);
+    line-height: 1.5; /* line spacing */
+    width: 80%; /* prevent the text from being too wide */
+}
+
+
+/*
+    targets the agents section
+*/
+#Agents {
+    color: var(--valorant-black);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+
+/*
+    targets the agents section heading
+*/
+#Agents h2 {
+    font-size: var(--h2-font-size);
+}
+
+
+/*
+    targets the agents section paragraph
+*/
+#Agents p {
+    padding-top: 20px; /* space below the Agents header */
+    font-size: var(--base-text-size);
+}
+
+
+/*
+    footer styling
+
+    center the items in a vertical column with
+    a black background with white text. Add a little
+    padding to the top and bottom to give it some space.
+*/
+footer {
+    /* flex in the column direction to veritically align the footer content */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* horizontally center the footer content */
+    background-color: var(--valorant-black);
+    color: var(--valorant-white);
+    font-size: 16px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}

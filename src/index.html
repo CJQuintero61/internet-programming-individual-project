@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!--
+  HTML file for the internet programming individual project.
+  This project is a web app that fetches from an api and displays information about Valorant agents and their abilities.
+  The project is to demonstrate skills for HTML, JS, and CSS. No frameworks are allowed (React, Vue, Tailwind, etc.).
+
+  Created By: Christian Quintero
+  Created On: 09/28/2026
+-->
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Valorant Agent Viewer</title>
+    <link href="styles.css" rel="stylesheet" />
+    <script src="app.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Valorant Agent Viewer</h1>
+        <nav>
+            <a href="#Home">Home</a>
+            <a href="#Agents">Agents</a>
+            <a href="#Abilities">Abilities</a>
+            <a href="#Github">Github</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Home section -->
+        <section id="Home">
+            <h2>Welcome to the Valorant Agent Viewer</h2>
+            <p>
+                The Valorant Agent Viewer is a web application that allows you to select and view information about
+                different agents and their abilities from Valorant. To use, select an agent from the dropdown
+                menu and view their details.
+            </p>
+        </section>
+
+        <!-- Agents section -->
+        <section id="Agents">
+            <h2>Agents</h2>
+            <p>Select an agent from the dropdown menu to view their details.</p>
+            <select id="agent-select">
+                <!-- this loading option is removed once the agents are loaded -->
+                <option value="Loading...">Loading...</option>
+            </select>
+        </section>
+
+        <!-- Abilities section -->
+        <section id="Abilities">
+        </section>
+
+        <!-- Github section -->
+        <section id="Github">
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 Christian Quintero. All rights reserved.</p>
+
+        <!-- a modified copy of the footer from https://valorant-api.com/ -->
+        <p>Valorant Agent Viewer is a non-official API and not endorsed by Riot Games in any way.</p>
+        <p>
+            Riot Games, Valorant, and all associated properties are trademarks or registered
+            trademarks of Riot Games, Inc.
+        </p>
+    </footer>
+</body>
+</html>
