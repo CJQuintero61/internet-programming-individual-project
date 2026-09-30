@@ -25,8 +25,14 @@
     --offwhite: #ffeef2;
     --red-gray: #452e36;
 
-    --h2-font-size: 32px;
-    --base-text-size: 24px;
+    --h2-font-size: 1.5rem;
+    --base-text-size: 1.25rem;
+
+    /*
+        used for left and right padding to keep things
+        away from the edges of the viewport
+    */
+    --page-gutter: 10%;
 }
 
 
@@ -49,8 +55,8 @@
     header styling
 */
 header {
-    color: var(--valorant-white);
-    background-color: var(--valorant-red);
+    color: var(--valorant-red);
+    background-color: var(--valorant-black);
 
     /* flex in a row to have the title and nav in the same line */
     display: flex;
@@ -64,10 +70,10 @@ header {
     padding-bottom: 20px;
 
     /* padd the left and right to center the title and nav items */
-    padding-right: 200px;
-    padding-left: 200px;
+    padding-left: var(--page-gutter);
+    padding-right: var(--page-gutter);
 
-    font-size: 24px;
+    font-size: 1rem;
 }
 
 
@@ -86,9 +92,9 @@ header nav {
     targets the nav <a> links within the header
 */
 header nav a {
-    color: var(--valorant-white);
+    color: var(--valorant-red);
     text-decoration: none; /* remove default underline from nav links */
-    font-size: 24px; /* set a smaller font size for the nav links */
+    font-size: var(--base-text-size);
     font-weight: bold; /* make the nav links bold */
     text-decoration: underline;
     text-underline-offset: 8px; /* move the underline down a bit */
@@ -125,7 +131,8 @@ main {
     flex-direction: column;
     padding-top: 20px;
     padding-bottom: 20px;
-    padding-left: 200px;
+    padding-left: var(--page-gutter);
+    padding-right: var(--page-gutter);
 }
 
 
@@ -144,7 +151,17 @@ main {
     padding-top: 20px;
     font-size: var(--base-text-size);
     line-height: 1.5; /* line spacing */
-    width: 80%; /* prevent the text from being too wide */
+}
+
+
+/*
+    separator styling
+*/
+hr {
+    height: 8px;
+    background-color: var(--valorant-black);
+    margin: 20px var(--page-gutter);
+    border-radius: 1rem;    /* rounded corners */
 }
 
 
@@ -177,6 +194,19 @@ main {
     font-size: var(--base-text-size);
 }
 
+/*
+    targets the select dropdown in the agents section
+*/
+#Agents select {
+    font-size: var(--base-text-size);
+    /*
+        margin here, not padding otherwise the gray space in
+        the select menu grows instead of spacing the box
+        from the text above it
+    */
+    margin-top: 20px;
+}
+
 
 /*
     footer styling
@@ -192,7 +222,7 @@ footer {
     align-items: center; /* horizontally center the footer content */
     background-color: var(--valorant-black);
     color: var(--valorant-white);
-    font-size: 16px;
+    font-size: 1rem;
     padding-top: 20px;
     padding-bottom: 20px;
 }

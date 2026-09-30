@@ -13,10 +13,11 @@
     API_URL (str) - the API URL to fetch a response from
     AGENT_SELECT (HTMLElement) - the dropdown element for selecting an agent
 */
-const API_URL = "https://valorant-api.com/v1/agents"
+const API_URL = "https://valorant-api.com/v1/agents";
+const AGENT_SELECT = document.querySelector("#agent-select");
 
 
-async function getResponse() {
+async function fetchAgents() {
     /*
         this async function fetches the json response data from the API
         and parses it into a data array.
@@ -34,16 +35,14 @@ async function getResponse() {
     return parsedResponse.data;
 }
 
-
 function fillAgentDropdown(agentList) {
     /*
         this function fills the agent dropdown with the list of agents
         fetched from the API.
     */
-    const agentSelect = document.querySelector("#agent-select");
 
     // clear the loading option after the agents are loaded
-    agentSelect.innerHTML = "";
+    AGENT_SELECT.innerHTML = "";
 
     agentList.forEach((agent) => {
         // create a new option element for each agent
@@ -57,7 +56,7 @@ function fillAgentDropdown(agentList) {
         if (agent.isPlayableCharacter) {
             option.value = agent.displayName;
             option.textContent = agent.displayName;
-            agentSelect.appendChild(option);
+            AGENT_SELECT.appendChild(option);
         }
     });
 }
@@ -75,7 +74,40 @@ function findAgent(agentList, displayName) {
         Returns:
             object - the selected agent's data object
     */
+
+    // note that this comparison is checking where the agent object's display name
+    // matches the display name in the entire agentList
     return agentList.find((agent) => agent.displayName === displayName);
+}
+
+
+function agentSelectHandler(event, agentList) {
+    /*
+        action listener for the agent select dropdown.
+        It grabs the selected agent from the dropdown based on what
+        is selected so that later the page can be updated to the current
+        agent
+
+        Args:
+            event (Event) - the change event from the dropdown
+            agentList (array) - the list of agents fetched from the API
+    */
+
+    const selectedAgent = findAgent(agentList, event.target.value);
+
+    // display the details of the selected agent
+    displayAgent(selectedAgent);
+}
+
+
+function displayAgent(agent) {
+    /*
+        displays the details of the given agent.
+        
+        Args:
+            agent (object) - the agent's data object to display
+    */
+    console.log(agent);
 }
 
 
@@ -86,17 +118,22 @@ async function main() {
     */
     
 
-    // since getResponse() can throw an error, we catch that error and log it here
+    // since fetchAgents() can throw an error, we catch that error and log it here
     try {
         // at this point, the agentList is a regular array ready for use
-        const agentList = await getResponse();
-        console.log(agentList);
+        const agentList = await fetchAgents();
 
         // fill the agent dropdown with the fetched agents
         fillAgentDropdown(agentList);
 
-        // show the currently selected Agent's details
-        const agentSelect = document.querySelector("#agent-select");
+        // add event listener to the agent select dropdown
+        // an arrow function is used here to pass the event and the agentList to the handler function
+        AGENT_SELECT.addEventListener("change", (event) => agentSelectHandler(event, agentList));
+
+        // display the details of the initially selected agent
+        displayAgent(findAgent(agentList, AGENT_SELECT.value));
+
+        
         
     }
     catch (error) {
