@@ -9,3 +9,5 @@ AI was used for
   - instead of using pixel units for font sizes, I swapped to rem units
   - left vertical padding units as pixels since that is fine on small screens
 - \<hr> instead of \<div> for a decoration bar
+- making the agent container div with the agent's background and portrait
+  - a lot of css debugging

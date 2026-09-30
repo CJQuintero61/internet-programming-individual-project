@@ -47,17 +47,9 @@ function fillAgentDropdown(agentList) {
     agentList.forEach((agent) => {
         // create a new option element for each agent
         const option = document.createElement("option");
-
-        /*
-            due to an issue with the API, there is 1 agent that is duplicated
-            in the response. To filter to the correct agents, the API
-            says to use 'isPlayableCharacter' and only take the true entries
-        */
-        if (agent.isPlayableCharacter) {
-            option.value = agent.displayName;
-            option.textContent = agent.displayName;
-            AGENT_SELECT.appendChild(option);
-        }
+        option.value = agent.displayName;
+        option.textContent = agent.displayName;
+        AGENT_SELECT.appendChild(option);
     });
 }
 
@@ -76,7 +68,7 @@ function findAgent(agentList, displayName) {
     */
 
     // note that this comparison is checking where the agent object's display name
-    // matches the display name in the entire agentList
+    // matches the display name in the filtered agent list
     return agentList.find((agent) => agent.displayName === displayName);
 }
 
@@ -102,11 +94,21 @@ function agentSelectHandler(event, agentList) {
 
 function displayAgent(agent) {
     /*
-        displays the details of the given agent.
+        displays the details of the currently selected agent
         
         Args:
             agent (object) - the agent's data object to display
     */
+
+    // set the agent's background image
+    const agentBackground = document.querySelector('#agent-portrait-container');
+    agentBackground.hidden = false;
+    agentBackground.style.backgroundImage = `url("${agent.background}")`;
+    
+    // sett the agent portrait
+    const agentPortrait= document.querySelector('#agent-portrait');
+    agentPortrait.src = agent.fullPortrait;
+    agentPortrait.alt = `A portrait of ${agent.displayName} from Valorant`;
     console.log(agent);
 }
 
@@ -121,7 +123,14 @@ async function main() {
     // since fetchAgents() can throw an error, we catch that error and log it here
     try {
         // at this point, the agentList is a regular array ready for use
-        const agentList = await fetchAgents();
+        const allAgents = await fetchAgents();
+
+        /*
+            due to an issue with the API, there is 1 agent (KAY/O) that is duplicated
+            in the response. To filter to the correct agents, the API
+            says to use 'isPlayableCharacter' and only take the true entries
+        */
+        const agentList = allAgents.filter((agent) => agent.isPlayableCharacter);
 
         // fill the agent dropdown with the fetched agents
         fillAgentDropdown(agentList);
@@ -132,9 +141,6 @@ async function main() {
 
         // display the details of the initially selected agent
         displayAgent(findAgent(agentList, AGENT_SELECT.value));
-
-        
-        
     }
     catch (error) {
         console.error(error)

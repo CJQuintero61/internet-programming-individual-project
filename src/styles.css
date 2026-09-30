@@ -94,7 +94,7 @@ header nav {
 header nav a {
     color: var(--valorant-red);
     text-decoration: none; /* remove default underline from nav links */
-    font-size: var(--base-text-size);
+    font-size: 1.5rem;
     font-weight: bold; /* make the nav links bold */
     text-decoration: underline;
     text-underline-offset: 8px; /* move the underline down a bit */
@@ -205,6 +205,32 @@ hr {
         from the text above it
     */
     margin-top: 20px;
+}
+
+
+/*
+    targets the agent's background
+
+    shows the agent's background twice, side by side, behind
+    the portrait. each copy is half the container's width, so exactly
+    two fit horizontally. no-repeat stops a second row from appearing
+    if the container gets tall enough.
+*/
+#agent-portrait-container {
+    width: 80%;
+    margin-top: 20px;
+    background-size: 50%;
+    background-repeat: space no-repeat;
+    background-position: center;    /* center vertically */
+}
+
+
+/*
+    styling for the agent image
+*/
+#agent-portrait {
+    width: 100%;         /* use 100% of the portrait container width */
+    height: auto;       /* keep the original aspect ratio */
 }
 
 

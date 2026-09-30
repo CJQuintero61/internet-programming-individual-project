@@ -21,7 +21,6 @@
         <nav>
             <a href="#Home">Home</a>
             <a href="#Agents">Agents</a>
-            <a href="#Abilities">Abilities</a>
             <a href="#Github">Github</a>
         </nav>
     </header>
@@ -43,15 +42,24 @@
         <!-- Agents section -->
         <section id="Agents">
             <h2>Agents</h2>
-            <p>Select an agent from the dropdown menu to view their details.</p>
+            
+            <!-- label for the selection dropdown -->
+            <label for="agent-select">
+                <p>Select an agent from the dropdown menu to view their details.</p>
+            </label>
             <select id="agent-select">
                 <!-- this loading option is removed once the agents are loaded -->
                 <option value="Loading...">Loading...</option>
             </select>
-        </section>
-
-        <!-- Abilities section -->
-        <section id="Abilities">
+            
+            <!-- the agent portrait container pairs the agent's portrait and background image -->
+            <div id="agent-portrait-container" hidden>
+                <!-- 
+                    reference to the agent's image that is updated by js
+                    js adds the src and alt text
+                -->
+                <img id="agent-portrait">
+            </div>
         </section>
 
         <!-- Github section -->
