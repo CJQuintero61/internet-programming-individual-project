@@ -217,7 +217,7 @@ hr {
     if the container gets tall enough.
 */
 #agent-portrait-container {
-    width: 80%;
+    width: 50%;
     margin-top: 20px;
     background-size: 50%;
     background-repeat: space no-repeat;
@@ -231,6 +231,115 @@ hr {
 #agent-portrait {
     width: 100%;         /* use 100% of the portrait container width */
     height: auto;       /* keep the original aspect ratio */
+}
+
+
+/*
+    abilities heading
+
+    This is the heading below the character portrait
+*/
+#ability-header {
+    font-size: var(--h2-font-size);
+    margin-top: 40px;
+}
+
+
+/*
+    the list of ability cards. cards sit in a row
+    and wrap onto new lines on smaller screens
+*/
+#ability-list {
+    list-style: none;   /* remove the bullet points */
+    display: flex;      /* we want the list to be aligned horizontally */
+    
+    /*
+    use more lines for the ability cards if the
+    screen can't fit them all in one line
+    */
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;  /* gap spacing between each card */
+    width: 80%;
+    margin-top: 20px;
+}
+
+
+/*
+    applies styles to all ability cards
+*/
+.ability-card {
+    /*
+        prevents a single card on its own row from taking
+        up all the space, so all cards are capped at 20%
+    */
+    max-width: 20%;
+
+    /* stack the icon, name, and description vertically */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+
+    padding: 24px;
+    border-radius: 1rem; /* rounded card edges */
+    border-top: 12px solid var(--valorant-red);   /* accent stripe */
+    background-color: var(--valorant-black);
+    color: var(--valorant-white);
+
+    /* creates card shadows around each ability */
+    box-shadow: 0 4px 12px var(--valorant-black);
+
+    /*
+        .ability-card:hover will translate the card upwards
+        a bit. This transition slows it down to look smoother
+        instead of instantly teleporting the card
+    */
+    transition: transform 0.2s;
+}
+
+
+/*
+    lift the card slightly when hovered
+*/
+.ability-card:hover {
+    /* moves the card upward in the -y direction */
+    transform: translateY(-12px);
+}
+
+
+/*
+    ability name
+
+    make the ability name red and larger
+*/
+.ability-card h4 {
+    font-size: var(--base-text-size);
+    color: var(--valorant-red);
+}
+
+
+/*
+    ability description
+
+    set the font size and line spacing
+*/
+.ability-card p {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+
+/*
+    ability icon
+
+    makes the icons a bit smaller and keeps
+    their scaling correct
+*/
+.ability-card img {
+    width: 50%;
+    height: auto;
 }
 
 

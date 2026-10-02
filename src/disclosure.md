@@ -11,3 +11,4 @@ AI was used for
 - \<hr> instead of \<div> for a decoration bar
 - making the agent container div with the agent's background and portrait
   - a lot of css debugging
+- ability card decorations
