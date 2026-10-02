@@ -25,7 +25,7 @@
     --offwhite: #ffeef2;
     --red-gray: #452e36;
 
-    --h2-font-size: 1.5rem;
+    --h2-font-size: 2.0rem;
     --base-text-size: 1.25rem;
 
     /*
@@ -235,13 +235,75 @@ hr {
 
 
 /*
+    agent description container
+*/
+#agent-description-container {
+    /* stack the agent icon, name, and description vertically */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    
+    margin-top: 20px;
+    padding: 24px;
+    border-radius: 1rem; /* rounded card edges */
+    border-top: 12px solid var(--valorant-red);   /* accent stripe */
+    background-color: var(--valorant-black);
+    color: var(--valorant-white);
+    box-shadow: 0 4px 12px var(--valorant-black);
+
+    /* cap the entire description box to a good size */
+    max-width: 40%;
+
+    /* grow the hover over time */
+    transition: transform 0.2s;
+}
+
+
+/*
+    agent description container hover
+*/
+#agent-description-container:hover {
+    /* small grow when hovered */
+    transform: scale(1.02);
+}
+
+/*
+    agent icon
+*/
+#agent-icon {
+    width: 20%;
+    height: auto;
+}
+
+/*
+    agent name header
+*/
+#agent-name {
+    font-size: var(--h2-font-size);
+    padding-top: 40px;
+    color: var(--valorant-red)
+}
+
+
+/*
+    agent description
+*/
+#agent-description {
+    font-size: 1rem;
+    line-height: 1.5;
+    padding-top: 20px;
+}
+
+
+/*
     abilities heading
 
     This is the heading below the character portrait
 */
 #ability-header {
     font-size: var(--h2-font-size);
-    margin-top: 40px;
+    padding-top: 40px;
 }
 
 

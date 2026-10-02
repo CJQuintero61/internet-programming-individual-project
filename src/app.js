@@ -137,6 +137,32 @@ function displayPortrait(agent) {
 }
 
 
+function displayDescription(agent) {
+    /*
+        shows the agent's icon, name, and description beneath the
+        portrait and above the abilities section
+
+        Args:
+            agent (object) - the currently selected agent object
+    */
+    
+    // get the html elements
+    const container = document.querySelector('#agent-description-container');
+    const icon = document.querySelector('#agent-icon');
+    const name = document.querySelector('#agent-name');
+    const desc = document.querySelector('#agent-description');
+
+    // show the div container with the name and description
+    container.hidden = false;
+
+    // update the content
+    icon.src = agent.displayIcon;
+    icon.alt = `${agent.displayName}'s character icon`
+    name.textContent = agent.displayName;
+    desc.textContent = agent.description;
+}
+
+
 function displayAbilities(agent) {
     /*
         builds then updates an ability card for each of the agent's abilities.
@@ -192,6 +218,9 @@ function displayAgent(agent) {
 
     // show the agent portrait and background
     displayPortrait(agent);
+
+    // show the agent name and description
+    displayDescription(agent);
     
     // show the agent's abilities
     displayAbilities(agent);
