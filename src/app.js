@@ -116,6 +116,27 @@ function createAbilityCard() {
 }
 
 
+function displayPortrait(agent) {
+    /*
+        shows the currently selected agent's portrait
+        and background image
+
+        Args:
+            agent (object) - the currently selected agent
+    */
+
+    // set the agent's background image
+    const agentBackground = document.querySelector('#agent-portrait-container');
+    agentBackground.hidden = false;
+    agentBackground.style.backgroundImage = `url("${agent.background}")`;
+    
+    // sett the agent portrait
+    const agentPortrait = document.querySelector('#agent-portrait');
+    agentPortrait.src = agent.fullPortrait;
+    agentPortrait.alt = `A portrait of ${agent.displayName} from Valorant`;
+}
+
+
 function displayAbilities(agent) {
     /*
         builds then updates an ability card for each of the agent's abilities.
@@ -154,6 +175,9 @@ function displayAbilities(agent) {
         name.textContent = ability.displayName;
         desc.textContent = ability.description;
         icon.src = ability.displayIcon;
+
+        /* ex: Gekko's Wingman ability icon */
+        icon.alt = `${agent.displayName}'s ${name.textContent} ability icon`;
     }
 }
 
@@ -166,15 +190,8 @@ function displayAgent(agent) {
             agent (object) - the agent's data object to display
     */
 
-    // set the agent's background image
-    const agentBackground = document.querySelector('#agent-portrait-container');
-    agentBackground.hidden = false;
-    agentBackground.style.backgroundImage = `url("${agent.background}")`;
-    
-    // sett the agent portrait
-    const agentPortrait = document.querySelector('#agent-portrait');
-    agentPortrait.src = agent.fullPortrait;
-    agentPortrait.alt = `A portrait of ${agent.displayName} from Valorant`;
+    // show the agent portrait and background
+    displayPortrait(agent);
     
     // show the agent's abilities
     displayAbilities(agent);
