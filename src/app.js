@@ -92,6 +92,72 @@ function agentSelectHandler(event, agentList) {
 }
 
 
+function createAbilityCard() {
+    /*
+        creates an empty ability card with an icon, name, and description.
+        displayAbilities() will fill in the content
+
+        Returns:
+            HTMLElement - the new <li> card
+    */
+
+    // create the new list item
+    const card = document.createElement("li");
+    card.className = "ability-card";
+
+    // set the data fields for this ability
+    const icon = document.createElement("img");
+    const name = document.createElement("h4");
+    const desc = document.createElement("p");
+
+    // append the items to the list item
+    card.append(icon, name, desc);
+    return card;
+}
+
+
+function displayAbilities(agent) {
+    /*
+        builds then updates an ability card for each of the agent's abilities.
+        The cards are build once on page load for the first agent,
+        then updates the created cards for the selected agent
+
+        Args:
+            agent (object) - the currently selected agent's data dictionary
+    */
+
+    // grab the list header and list block to show them
+    const abilityHeader = document.querySelector("#ability-header");
+    const abilityList = document.querySelector("#ability-list");
+    abilityHeader.hidden = false;
+    abilityList.hidden = false;
+
+    // we only want to make the ability cards once on page load,
+    // then stop so later we can just update the already existing
+    // ability cards
+    if (abilityList.children.length === 0) {
+        // all agents have exactly 4 abilities
+        for (let i = 0; i < 4; i++) {
+            abilityList.appendChild(createAbilityCard());
+        }
+    }
+
+    // update the existing 4 ability cards
+    for (let i = 0; i < 4; i++) {
+        const ability = agent.abilities[i];
+        const card = abilityList.children[i];
+        
+        const icon = card.querySelector('img');
+        const name = card.querySelector('h4');
+        const desc = card.querySelector('p');
+
+        name.textContent = ability.displayName;
+        desc.textContent = ability.description;
+        icon.src = ability.displayIcon;
+    }
+}
+
+
 function displayAgent(agent) {
     /*
         displays the details of the currently selected agent
@@ -106,10 +172,12 @@ function displayAgent(agent) {
     agentBackground.style.backgroundImage = `url("${agent.background}")`;
     
     // sett the agent portrait
-    const agentPortrait= document.querySelector('#agent-portrait');
+    const agentPortrait = document.querySelector('#agent-portrait');
     agentPortrait.src = agent.fullPortrait;
     agentPortrait.alt = `A portrait of ${agent.displayName} from Valorant`;
-    console.log(agent);
+    
+    // show the agent's abilities
+    displayAbilities(agent);
 }
 
 
@@ -143,7 +211,7 @@ async function main() {
         displayAgent(findAgent(agentList, AGENT_SELECT.value));
     }
     catch (error) {
-        console.error(error)
+        console.error(error);
     }
 }
 

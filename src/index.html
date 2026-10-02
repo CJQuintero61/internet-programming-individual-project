@@ -45,7 +45,7 @@
             
             <!-- label for the selection dropdown -->
             <label for="agent-select">
-                <p>Select an agent from the dropdown menu to view their details.</p>
+                Select an agent from the dropdown menu to view their details.
             </label>
             <select id="agent-select">
                 <!-- this loading option is removed once the agents are loaded -->
@@ -58,8 +58,12 @@
                     reference to the agent's image that is updated by js
                     js adds the src and alt text
                 -->
-                <img id="agent-portrait">
+                <img id="agent-portrait" alt="">
             </div>
+
+            <!-- the abilities list is updated by js -->
+            <h3 id="ability-header" hidden>Abilities</h3>
+            <ul id="ability-list" hidden></ul>
         </section>
 
         <!-- Github section -->

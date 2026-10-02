@@ -189,7 +189,7 @@ hr {
 /*
     targets the agents section paragraph
 */
-#Agents p {
+#Agents label {
     padding-top: 20px; /* space below the Agents header */
     font-size: var(--base-text-size);
 }
