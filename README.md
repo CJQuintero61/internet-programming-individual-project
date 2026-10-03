@@ -16,3 +16,12 @@ The project is meant to be simple and small in scope and only use HTML, CSS, and
 ## AI Usage Note
 
 AI was used to help me create this project. For more information on specific AI use, see `src/disclosure.md`.
+
+## Data Sources
+
+The API reference can be found at these links
+
+- [Valorant API Homepage](https://valorant-api.com/)
+- [Valorant API agents endpoint documentation](https://dash.valorant-api.com/endpoints/agents)
+- [Valorant API Response Link used for the project](https://valorant-api.com/v1/agents)
+- [The Valorant color palette can be found here](https://www.color-hex.com/color-palette/1045638)
