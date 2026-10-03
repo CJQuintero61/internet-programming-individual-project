@@ -261,6 +261,15 @@ hr {
 
 
 /*
+    display: flex overrides the hidden attribute, so re-apply it
+    when the response fails
+*/
+#agent-description-container[hidden] {
+    display: none;
+}
+
+
+/*
     agent description container hover
 */
 #agent-description-container:hover {
@@ -422,4 +431,16 @@ footer {
     font-size: 1rem;
     padding-top: 20px;
     padding-bottom: 20px;
+}
+
+
+/*
+    error message shown when the API request fails
+*/
+.error-message {
+    text-align: center;
+    font-size: var(--base-text-size);
+    line-height: 1.5;
+    width: 80%;
+    margin-top: 20px;
 }

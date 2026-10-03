@@ -227,6 +227,39 @@ function displayAgent(agent) {
 }
 
 
+function showErrorPage(error) {
+    /*
+        function for what to do when the API request fails
+
+        Args:
+            error (error) - the error object from the failed response 
+    */
+
+    const agentsHeader = document.querySelector('#agents-section-header');
+    agentsHeader.textContent = "An unexpected error occurred!";
+
+    // delete the agent select label
+    const label = document.querySelector('#agent-select-label');
+    label.remove();
+
+    // delete the agent select dropdown
+    const select = document.querySelector('#agent-select');
+    select.remove();
+
+    // create the error message node
+    const agentsSection = document.querySelector('#Agents');
+    const message = document.createElement('p');
+    message.className = "error-message";
+    message.textContent = 
+    `
+    We're sorry, an unexpected error occurred fetching data from the API.
+    The response failed due to: ${error.message}. Try reloading the page, or contact
+    the developers if the issue persists.
+    `
+    agentsSection.appendChild(message);
+}
+
+
 async function main() {
     /*
         this function is the main entry point for the app.
@@ -258,6 +291,7 @@ async function main() {
     }
     catch (error) {
         console.error(error);
+        showErrorPage(error);
     }
 }
 
